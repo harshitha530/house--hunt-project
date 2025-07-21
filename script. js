@@ -1,0 +1,29 @@
+let properties = [
+  { city: "Delhi", name: "Sky Residency", price: "₹20,000/month" },
+  { city: "Mumbai", name: "Sea View Apartments", price: "₹30,000/month" },
+  { city: "Hyderabad", name: "Green Homes", price: "₹18,000/month" },
+  { city: "Chennai", name: "Ocean Breeze", price: "₹25,000/month" }
+];
+
+function filterByCity() {
+  const city = document.getElementById("cityInput").value.toLowerCase();
+  const filtered = properties.filter(p => p.city.toLowerCase().includes(city));
+
+  const resultsDiv = document.getElementById("results");
+  resultsDiv.innerHTML = "";
+
+  if (filtered.length === 0) {
+    resultsDiv.innerHTML = "<p>No properties found.</p>";
+    return;
+  }
+
+  filtered.forEach(p => {
+    resultsDiv.innerHTML += `
+      <div>
+        <h3>${p.name}</h3>
+        <p>City: ${p.city}</p>
+        <p>Price: ${p.price}</p>
+      </div>
+    `;
+  });
+}
